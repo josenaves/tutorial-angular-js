@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- diretiva ng-app -->
+<html ng-app="ep08App">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Tutorial AngularJS - episódio 8 - Serviços</title>
+  <script>
+    document.write('<base href="' + document.location + '" />');
+  </script>
+  <link rel="stylesheet" href="style.css" />
+  <script data-require="angular.js@1.2.x" src="http://code.angularjs.org/1.2.4/angular.js" data-semver="1.2.1"></script>
+    <script data-require="angular.js@1.2.x" src="http://code.angularjs.org/1.2.4/i18n/angular-locale_pt-br.js" ></script>
+  <script src="app.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+</head> 
+
+<!-- define um controller para este trecho da tela -->
+<!-- diretiva ng-controller -->
+
+<body ng-controller="controllerEp08">
+
+  <div class="container theme-showcase">
+    <h1>Estados e capitais</h1>
+    
+    <p>Data: {{ today | date}}</p>
+    
+    <p>Filtrar: <input type="text" ng-model="filtro" /></p>
+
+    <ul class="list-group">
+      <!-- diretiva ng-repeat -->
+      <li class="list-group-item" ng-repeat="state in states | orderBy:'name' | filter:filtro">
+      {{state.name | uppercase}} - {{state.capital | lowercase}} - renda per capita: {{state.renda | currency}}
+      </li>
+    </ul>
+
+    <p>
+      <!-- diretiva ng-submit -->
+      <form ng-submit="addState()">
+        <!-- diretiva ng-model -->
+        <input type="text" ng-model="estado" placeholder="Digite um estado" />
+        <input type="text" ng-model="capital" placeholder="Digite a capital" />
+        <input type="submit" value="Incluir" />
+      </form>
+    </p>
+
+    <!-- limitTo -->
+    <p>Letras: {{letras}}</p>
+    <p>Letras (limitado a 2): {{letras | limitTo : 2}}</p>
+    <p>Letras (limitado a 2 e uppercase): {{letras | limitTo : 2 | uppercase }}</p>
+
+    <!-- filtro json -->
+    <p>Estados (json): {{states| json }}</p>
+
+  </div>
+</body>
+
+</html>

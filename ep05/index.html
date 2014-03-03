@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<!-- diretiva ng-app -->
+<html ng-app="episodio5App">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Tutorial AngularJS - episódio 5 - Diretivas</title>
+  <script>
+    document.write('<base href="' + document.location + '" />');
+  </script>
+  <link rel="stylesheet" href="style.css" />
+  <script data-require="angular.js@1.2.x" src="http://code.angularjs.org/1.2.1/angular.js" data-semver="1.2.1"></script>
+  <script src="app.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+  <title>Tutorial AngularJS - episódio 5 - Diretivas</title>
+</head>
+
+<!-- define um controller para este trecho da tela -->
+<!-- diretiva ng-controller -->
+
+<body ng-controller="ep05Controller">
+
+  <div class="container theme-showcase">
+    <h1>Estados e capitais</h1>
+    <ul class="list-group">
+      <!-- diretiva ng-repeat -->
+      <li class="list-group-item" ng-repeat="state in states">{{state.name}} - {{state.capital}}</li>
+    </ul>
+ 
+    <p>
+      <!-- diretiva ng-submit -->
+      <form ng-submit="addState()">
+        <!-- diretiva ng-model -->
+        <input type="text" ng-model="estado" placeholder="Digite um estado" />
+        <input type="text" ng-model="capital" placeholder="Digite a capital" />
+        <input type="submit" value="Incluir" />
+      </form>
+    </p>
+
+    <p>
+      <!-- diretiva ng-model -->
+      Gostei
+      <input type="checkbox" ng-model="gostei" />
+      <!-- diretiva ng-show -->
+      <span class="glyphicon glyphicon-thumbs-up" ng-show="gostei"></span>
+    </p>
+
+    <p>
+      Esconder
+      <input type="checkbox" ng-model="escondido" />
+      <!-- diretiva ng-hide -->
+
+      <span class="glyphicon glyphicon-usd" ng-hide="escondido"></span>
+    </p>
+
+    <!-- diretiva ng-click -->
+    <button ng-click="incrementa()">Diretiva ng-click</button>
+    <!--<button ng-click="contador = contador + 1">Diretiva ng-click</button>-->
+
+    <!-- diretiva ng-bind -->
+    <p>Você clicou <span ng-bind="contador"></span> vezes no botão acima</p>
+    <!--<p>Você clicou {{contador}} vezes no botão acima</p>-->
+
+  </div>
+</body>
+
+</html>
