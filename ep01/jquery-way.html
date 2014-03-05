@@ -1,0 +1,22 @@
+<html encoding="UTF-8">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var nome = $('#nome');
+				var saudacao = $('#saudacao');
+
+				nome.keyup(function() {
+					saudacao.text('Olá ' + nome.val() + '!');
+				})
+			})
+		</script>
+	</head>
+
+	<body>
+		<h1>Saudação - JQuery Way</h1>
+		<input id="nome" type="text"/>
+		<h2 id="saudacao"></h2>
+	</body>
+</html>
