@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Alagoas",
+    "capital": "Maceió",
+    "renda": 2043
+  }, {
+    "name": "Minas Gerais",
+    "capital": "Belo Horizonte",
+    "renda": 2000
+  }, {
+    "name": "São Paulo",
+    "capital": "São Paulo",
+    "renda": 2999.45
+  }, {
+    "name": "Paraíba",
+    "capital": "João Pessoa",
+    "renda": 2000
+  }, {
+    "name": "Rio de Janeiro",
+    "capital": "Rio de Janeiro",
+    "renda": 2000
+  },
+  {
+    "name": "Santa Catarina",
+    "capital": "Florianópolis",
+    "renda": 3000
+  }, {
+    "name": "Pernambuco",
+    "capital": "Recife",
+    "renda": 2000
+  },
+  {
+    "name": "Espírito Santo",
+    "capital": "Vitória",
+    "renda": 2000
+  }
+]
