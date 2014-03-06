@@ -25,9 +25,7 @@ serviceApp.service('statesService', function($http) {
     //$http.get('states.json').success(callback);
     $http.get('http://statesapi.apiary.io/app.apiary.io/states').success(callback);
   };
-
 });
-
 
 //--- AQUI VAI O CONTROLLER (agora mais magro)
 serviceApp.controller('controllerEp09', function($scope, statesService) {
@@ -37,7 +35,6 @@ serviceApp.controller('controllerEp09', function($scope, statesService) {
   statesService.getStates(function(data){
     $scope.states = data;
   });
-  
   
   $scope.today = statesService.getToday();
   $scope.letras = statesService.getLetters();
