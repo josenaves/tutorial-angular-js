@@ -1,0 +1,40 @@
+# Tutorial AngularJS - episódio 10 - roteamento
+
+
+## Introdução
+
+Olá pessoal, aqui estamos novamente com mais um episódio do tutorial AngularJS.
+
+E eis que chegamos no décimo episódio ! Mais alguns e nossa jornada chegará ao fim.
+
+Recapitulando, Angular é um excelente framework para o desenvolvimento de SPA (Single Page Applications). Até agora, nossa aplicação de estados e capitais possui apenas uma página !
+
+Isso foi proposital. Agora chegou a hora de arrumar isso.
+
+A ideia é "quebrar" nosso layout em regiões menores e jogar o conteúdo em arquivos html - os "partials". Então, vamos quebrar o layout em dois: listagem e criação.
+
+Após fazer isso, vamos criar URI's para carregar parte da tela (#create / #states). O primeiro é a tela de criação e o segundo serve para listagem. E para toda esta mágica funcionar, usaremos o serviço $routeProvider.
+
+
+Podemos criar rotas na nossa aplicação chamando algumas funções do serviço $routeProvider
+
+Dica : vale lembrar que providers só podem ser injetados na função config. Não injete o $routeProvider em um controller !!!!
+
+serviceApp.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+      when('/states', { templateUrl: 'list.html', controller: 'controllerEp10'}).
+      when('/create', { templateUrl: 'create.html', controller: 'controllerEp10'}).
+      when('/delete', { templateUrl: 'list.html', controller: 'controllerEp10'}).
+      otherwise({
+        redirectTo: '/states'
+      });
+  }
+]);
+
+Não podemos nos esquecer de incluir o módulo ngRoute como dependência antes de sair usando o $routeProvider
+
+// necessário definir a dependência ngRoute
+var serviceApp = angular.module('ep10App', ['ngRoute']);
+
+
