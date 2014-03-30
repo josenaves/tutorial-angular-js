@@ -1,0 +1,23 @@
+
+<ul>
+  <li><a href="#create">Incluir novo estado</a></li>
+</ul>
+
+<p>Data: {{ today | date}}</p>
+    
+<p>Filtrar: <input type="text" ng-model="filtro" /></p>
+
+<ul class="list-group">
+  <!-- diretiva ng-repeat -->
+  <li class="list-group-item" ng-repeat="state in states | orderBy:'name' | filter:filtro">
+  {{state.name | uppercase}} - {{state.capital | lowercase}} - renda per capita: {{state.renda | currency}} <a ng-click="deleteState($index)">[REMOVER]</a>
+  </li>
+</ul>
+
+<!-- limitTo -->
+<p>Letras: {{letras}}</p>
+<p>Letras (limitado a 2): {{letras | limitTo : 2}}</p>
+<p>Letras (limitado a 2 e uppercase): {{letras | limitTo : 2 | uppercase }}</p>
+
+<!-- filtro json -->
+<p>Estados (json): {{states| json }}</p>''

@@ -38,3 +38,59 @@ Não podemos nos esquecer de incluir o módulo ngRoute como dependência antes d
 var serviceApp = angular.module('ep10App', ['ngRoute']);
 
 
+
+## Slide 3
+
+E vamos ao código. O que mudou do episódio 9 para cá?
+
+Eu criei dois novos templates - create.html e list.html. Na verdade, o conteúdo de cada um deles estava em index.html.
+Em create.html, temos o formulário de inclusão de estados e capitais. E em list.html, o trecho que exibia a listagem de estados e capitais.
+
+Podemos dizer então que fiz uma pequena refatoração. Ah, no template index.html, vocês verão na linha 39, uma diretiva nova - ng-view. Ela indica que naquele ponto deverão ser incluídos os códigos dos templates.
+
+Agora, o que mudou bastante foi o arquivo app.js
+
+Na linha 8, ao definirmos nosso módulo, agora precisamos injetar o módulo ngRoute. Este módulo possui o serviço $route.
+
+var serviceApp = angular.module('ep10App', ['ngRoute']);
+
+
+Da linha 11 a 21, configuramos nosso provider - $routeProvider. Aqui estão as definições de nossas rotas. Veja a função when - passamos um objeto contendo a url (templateUrl) e um controller. Se a url informada não casar com nenhuma das listadas, a função otherwise se encarregará de fazer um redirecionamento para /states.
+
+serviceApp.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+      when('/states', { templateUrl: 'list.html', controller: 'controllerEp10'}).
+      when('/create', { templateUrl: 'create.html', controller: 'controllerEp10'}).
+      when('/delete', { templateUrl: 'list.html', controller: 'controllerEp10'}).
+      otherwise({
+        redirectTo: '/states'
+      });
+  }
+]);
+
+Observem na linha 81 e 86 um $location.path('#states'). Isso é basicamente o mesmo de um window.location mas na maneira AngularJS. Não use window.location quando estiver trabalhando com AngularJS - se fizer isso, você terá que lembrar de notificar Angular que houve uma mudança de contexto e coisas ruins podem acontecer. E se você estiver atendo, verá que na linha 72 estou injetando o serviço $location.
+
+serviceApp.controller('controllerEp10', function($scope, $location, statesService)
+
+Merece destaque a inicialização da aplicação. Das linhas 62 a 69, temos a chamada da função run que se encarregará de chamar o webservice que carregará a lista de estados e capitais e setará na variável states do escopo global $rootScope.
+
+
+// Inicialização
+serviceApp.run ( function($rootScope, statesService) {
+  
+  // carrega os estados
+  statesService.getStates(function(data){
+    $rootScope.states = data;
+  });
+  
+});
+
+
+## Slide 4
+
+Bom, é isso pessoal ! Espero que tenham gostado ! No próximo episódio vamos revisitar os serviços REST com $ngResource
+
+Assine o canal, compartilhe, comente, faça sugestões. E para quem se interessa em desenvolvimento mobile, vou lançar um canal com tutoriais de desenvolvimento Android.
+
+Fui !
